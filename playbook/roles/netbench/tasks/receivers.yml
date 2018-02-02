@@ -1,4 +1,4 @@
 ---
 
 - name: Start iperf in server mode
-  command: iperf -s
+  command: iperf -s {{ ansible_hostname }}.iperf.log &
