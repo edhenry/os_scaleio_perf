@@ -1,0 +1,70 @@
+------------------------------------------------------------
+Client connecting to 192.168.50.11, TCP port 5001
+TCP window size: 0.17 MByte (default)
+------------------------------------------------------------
+[  3] local 192.168.50.1 port 35374 connected with 192.168.50.11 port 5001
+------------------------------------------------------------
+Client connecting to 192.168.50.11, TCP port 5001
+TCP window size: 0.08 MByte (default)
+------------------------------------------------------------
+------------------------------------------------------------
+Client connecting to 192.168.50.11, TCP port 5001
+TCP window size: 0.08 MByte (default)
+------------------------------------------------------------
+[  3] local 192.168.50.1 port 35378 connected with 192.168.50.11 port 5001
+[  3] local 192.168.50.1 port 35376 connected with 192.168.50.11 port 5001
+------------------------------------------------------------
+Client connecting to 192.168.50.11, TCP port 5001
+TCP window size: 0.08 MByte (default)
+------------------------------------------------------------
+[  3] local 192.168.50.1 port 35380 connected with 192.168.50.11 port 5001
+------------------------------------------------------------
+Client connecting to 192.168.50.11, TCP port 5001
+TCP window size: 0.58 MByte (default)
+------------------------------------------------------------
+[  3] local 192.168.50.1 port 35382 connected with 192.168.50.11 port 5001
+------------------------------------------------------------
+Client connecting to 192.168.50.11, TCP port 5001
+TCP window size: 0.08 MByte (default)
+------------------------------------------------------------
+[  3] local 192.168.50.1 port 35384 connected with 192.168.50.11 port 5001
+------------------------------------------------------------
+Client connecting to 192.168.50.11, TCP port 5001
+TCP window size: 0.08 MByte (default)
+------------------------------------------------------------
+[  3] local 192.168.50.1 port 35386 connected with 192.168.50.11 port 5001
+------------------------------------------------------------
+Client connecting to 192.168.50.11, TCP port 5001
+TCP window size: 0.08 MByte (default)
+------------------------------------------------------------
+[  3] local 192.168.50.1 port 35388 connected with 192.168.50.11 port 5001
+------------------------------------------------------------
+Client connecting to 192.168.50.11, TCP port 5001
+TCP window size: 0.08 MByte (default)
+------------------------------------------------------------
+[  3] local 192.168.50.1 port 35392 connected with 192.168.50.11 port 5001
+------------------------------------------------------------
+Client connecting to 192.168.50.11, TCP port 5001
+TCP window size: 0.08 MByte (default)
+------------------------------------------------------------
+[  3] local 192.168.50.1 port 35390 connected with 192.168.50.11 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec   202 MBytes   169 Mbits/sec
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec   245 MBytes   206 Mbits/sec
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec   271 MBytes   227 Mbits/sec
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec   217 MBytes   182 Mbits/sec
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec   357 MBytes   299 Mbits/sec
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec   284 MBytes   239 Mbits/sec
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec   266 MBytes   223 Mbits/sec
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec   284 MBytes   238 Mbits/sec
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.1 sec   281 MBytes   234 Mbits/sec
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.2 sec   398 MBytes   327 Mbits/sec

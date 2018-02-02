@@ -1,0 +1,4 @@
+---
+
+- name: Start iperf in server mode
+  command: iperf -s

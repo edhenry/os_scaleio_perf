@@ -1,0 +1,9 @@
+[scaleio_nodes]
+192.168.50.11
+
+
+[iperf_receiver]
+192.168.50.11
+
+[iperf_sender]
+192.168.50.12

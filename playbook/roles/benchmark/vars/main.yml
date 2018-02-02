@@ -1,0 +1,14 @@
+---
+
+# FIO vars
+rwmixwrite: 50
+blocksize: "4k 16k 128K"
+invalidate: 1
+direct: 1
+filename: "/dev/scinia"
+runtime: 60
+ioengine: "libaio"
+numjobs: 64
+iodepth: 8
+randrepeat: 0
+filesize: 10G

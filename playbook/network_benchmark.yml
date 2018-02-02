@@ -1,0 +1,15 @@
+---
+
+- hosts: iperf_receiver
+  remote_user: vagrant
+  become: true
+  gather_facts: yes
+  roles:
+    - netbench
+
+- hosts: iperf_sender
+  remote_user: vagrant
+  become: true
+  gather_facts: yes
+  roles:
+    - netbench

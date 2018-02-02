@@ -1,0 +1,12 @@
+---
+
+- name: Copy iperf script
+  template:
+    src: iperf.sh
+    dest: /opt/iperf.sh
+
+- name: Run iperf test
+  command: ./iperf.sh {{ test_count }} {{ target_host }} {{ number_processes }}
+  args:
+    chdir: /opt
+

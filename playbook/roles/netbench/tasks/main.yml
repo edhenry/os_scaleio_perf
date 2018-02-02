@@ -1,0 +1,16 @@
+---
+
+- name: Install iperf
+  yum:
+    name: iperf
+    state: present
+
+- name: Receivers tasks
+  import_tasks: receivers.yaml
+- name: Senders tasks
+  import_tasks: senders.yaml
+
+
+- name: Fetch file from {{ hostname }}
+  fetch:
+    src: /tmp/{{ ansible_hostname }}

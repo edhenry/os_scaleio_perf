@@ -1,0 +1,227 @@
+---
+
+## Set Sysctl configurations
+
+- name: Set net.ipv4.tcp_slow_start_after_idle
+  sysctl:
+    name: net.ipv4.tcp_slow_start_after_idle
+    value: 0
+    state: present
+    sysctl_set: yes
+
+- name: Set net.core.wmem_max
+  sysctl:
+    name: net.core.wmem_max
+    value: 100000000
+    state: present
+    sysctl_set: yes
+
+- name: Set net.core.rmem_max
+  sysctl:
+    name: net.core.rmem_max
+    value: 100000000
+    state: present
+    sysctl_set: yes
+
+- name: Set net.core.wmem_default
+  sysctl:
+    name: net.core.wmem_default
+    value: 20000000
+    state: present
+    sysctl_set: yes
+
+- name: Set net.core.rmem_default
+  sysctl:
+    name: net.core.rmem_default
+    value: 20000000
+    state: present
+    sysctl_set: yes
+
+- name: Set net.core.netdev_max_backlog
+  sysctl:
+    name: net.core.netdev_max_backlog
+    value: 500000
+    state: present
+    sysctl_set: yes
+
+- name: Set net.core.optmem_max
+  sysctl:
+    name: net.core.optmem_max
+    value: 100000000
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_window_scaling
+  sysctl:
+    name: net.ipv4.tcp_window_scaling
+    value: 1
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_sack
+  sysctl:
+    name: net.ipv4.tcp_sack
+    value: 1
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_retrans_collapse
+  sysctl:
+    name: net.ipv4.tcp_retrans_collapse
+    value: 0
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.ip_no_pmtu_disc
+  sysctl:
+    name: net.ipv4.ip_no_pmtu_disc
+    value: 0
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_fin_timeout
+  sysctl:
+    name: net.ipv4.tcp_fin_timeout
+    value: 60
+    state: present
+    sysctl_set: yes
+
+- name: Set
+  sysctl:
+    name: net.ipv4.tcp_fack
+    value: 1
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_reordering
+  sysctl:
+    name: net.ipv4.tcp_reordering
+    value: 30
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_ecn
+  sysctl:
+    name: net.ipv4.tcp_ecn
+    value: 2
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_dsack
+  sysctl:
+    name: net.ipv4.tcp_dsack
+    value: 1
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_mem
+  sysctl:
+    name: net.ipv4.tcp_mem
+    value: 250000 999000 1972000
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_wmem
+  sysctl:
+    name: net.ipv4.tcp_wmem
+    value: 73000 146000 100000000
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_rmem
+  sysctl:
+    name: net.ipv4.tcp_rmem
+    value: 73000 146000 100000000
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_low_latency
+  sysctl:
+    name: net.ipv4.tcp_low_latency
+    value: 0
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_no_metrics_save
+  sysctl:
+    name: net.ipv4.tcp_no_metrics_save
+    value: 0
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_mtu_probing
+  sysctl:
+    name: net.ipv4.tcp_mtu_probing
+    value: 1
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.udp_mem
+  sysctl:
+    name: net.ipv4.udp_mem
+    value: 24794304 33059072 49588608
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.udp_rmem_min
+  sysctl:
+    name: net.ipv4.udp_rmem_min
+    value: 4096
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.udp_wmem_min
+  sysctl:
+    name: net.ipv4.udp_wmem_min
+    value: 4096
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.conf.all.forwarding
+  sysctl:
+    name: net.ipv4.conf.all.forwarding
+    value: 0
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.ip_forward
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 0
+    state: present
+    sysctl_set: yes
+
+- name: Set
+  sysctl:
+    name: net.ipv4.route.min_adv_mss
+    value: 1024
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_base_mss
+  sysctl:
+    name: net.ipv4.tcp_base_mss
+    value: 1024
+    state: present
+    sysctl_set: yes
+
+- name: Set net.ipv4.tcp_timestamps
+  sysctl:
+    name: net.ipv4.tcp_timestamps
+    value: 1
+    state: present
+    sysctl_set: yes
+
+## Run FIO Benchmark
+- name: Copy FIO script template to node
+  template:
+    src: templates/fio_test_v1.sh.j2
+    dest: /opt/fio_test_v1.sh
+    mode: a+x
+
+- name: Run benchmark
+  command: ./fio_test_v1.sh
+  args:
+    chdir: /opt
+
+

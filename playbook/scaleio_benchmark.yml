@@ -1,0 +1,8 @@
+---
+
+- hosts: scaleio_nodes
+  remote_user: vagrant
+  become: true
+  gather_facts: yes
+  roles:
+    - benchmark

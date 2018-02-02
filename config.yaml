@@ -1,0 +1,15 @@
+---
+# FIO Config
+- fio_size: "1G"
+- fio_runtime: "5"
+- fio_
+
+# ScaleIO Network Test Config
+
+- sds_ip: "192.168.1.1"
+- network_test_size_gb: 8
+- parallel_messages: 8
+
+# ScaleIO Network Latency
+
+- latency_config: "yes"
