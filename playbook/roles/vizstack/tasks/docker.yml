@@ -1,0 +1,49 @@
+---
+
+# Quick hacks to install docker
+# there are _much_ better ways to handle this
+
+# TODO Add support for multiple Ubuntu versions
+
+- name: Add docker repos
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  when: ansible_distribution == "Ubuntu"
+
+- name: Add repos to apt
+  command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  when: ansible_distribution == "Ubuntu"
+
+- name: Update apt
+  command: apt-get update
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install docker
+  apt:
+    name: docker-ce
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+# TODO Add support for multiple CentOS versions
+- name: Add Docker repos
+  command: curl -fsSL get.docker.com -o get-docker.sh
+  when: ansible_distribution == "CentOS"
+
+- name: Chown docker script
+  command: chown vagrant:vagrant get-docker.sh
+  when: ansible_distribution == "CentOS"
+
+- name: chmod docker script
+  command: chmod +x get-docker.sh
+  when: ansible_distribution == "CentOS"
+
+- name: Execute docker script
+  command: ./get-docker.sh
+  when: ansible_distribution == "CentOS"
+
+- name: Start docker
+  systemd:
+    name: docker
+    state: started
+
+
+

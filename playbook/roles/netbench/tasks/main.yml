@@ -5,12 +5,38 @@
     name: iperf
     state: present
 
-- name: Receivers tasks
-  import_tasks: receivers.yaml
-- name: Senders tasks
-  import_tasks: senders.yaml
+- include: servers.yml
+- include: clients.yml
 
-
-- name: Fetch file from {{ hostname }}
+- name: Fetch logs from clients
   fetch:
-    src: /tmp/{{ ansible_hostname }}
+    src: /tmp/{{ ansible_hostname }}_to_{{ item }}.iperf.log
+    dest: benchmark_results/netbench/clients/{{ ansible_hostname }}_to_{{ item }}.{{ ansible_date_time.date }}.{{ ansible_date_time.time }}.log
+    flat: yes
+  with_items:
+    - "{{ groups['iperf_clients'] }}"
+
+- name: Fetch logs from servers
+  fetch:
+    src: /tmp/{{ ansible_hostname }}.iperf.log
+    dest: benchmark_results/netbench/servers/server_{{ item }}.{{ ansible_date_time.date }}.{{ ansible_date_time.time }}.log
+    flat: yes
+  with_items:
+    - "{{ groups['iperf_servers'] }}"
+
+- name: Cleanup logs on servers
+  file:
+    path: /tmp/{{ ansible_hostname }}.iperf.log
+    state: absent
+  with_items:
+   - "{{ groups['iperf_servers'] }}"
+
+- name: Cleanup logs on clients
+  file:
+    path: /tmp/{{ ansible_hostname }}_to_{{ item }}.iperf.log
+    state: absent
+  with_items:
+   - "{{ groups['iperf_servers'] }}"
+
+- name: Kill all iperf processes on nodes
+  command: pkill -f iperf

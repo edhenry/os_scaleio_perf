@@ -1,0 +1,27 @@
+---
+
+- name: Instantiate influxdb container
+  docker_container:
+    name: influxdb
+    image: influxdb
+    volumes:
+      - /data
+    exposed_ports:
+      - 8086
+    ports:
+      - "8086:8086"
+
+- name: Wait for influxdb to start
+  pause: seconds=15
+
+- name: Create snap database
+  command: docker exec influxdb bash -l -c "influx -execute 'CREATE DATABASE snap_db'"
+
+- name: Create cpu_telemetry database
+  command: docker exec influxdb bash -l -c "influx -execute 'CREATE DATABASE {{ cpu_telemetry_db }}'"
+
+- name: Create interface_telemetry database
+  command: docker exec influxdb bash -l -c "influx -execute 'CREATE DATABASE {{ interface_telemetry_db }}'"
+
+- name: Create iostat_telemetry database
+  command: docker exec influxdb bash -l -c "influx -execute 'CREATE DATABASE {{ iostat_telemetry_db }}'"

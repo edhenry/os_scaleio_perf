@@ -1,0 +1,11 @@
+---
+
+snap_plugin_collector_interface_version: 7
+
+snap_plugin_publisher_influxdb_version: 25
+
+snap_plugin_collector_iostat_version: 6
+
+snap_plugin_collector_cpu_version: 7
+
+snap_plugin_collector_ethtool_version: 5

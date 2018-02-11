@@ -1,0 +1,38 @@
+---
+
+admin_user: admin
+admin_password: admin
+
+grafana_datasources:
+  - name: "cpu_db"
+    type: "influxDB"
+    access: "proxy"
+    url: http://{{ vizstack_host }}:8086
+    database: "{{ cpu_telemetry_db }}"
+    basicAuth: true
+    basicAuthUser: "{{ admin_user }}"
+    basicAuthPassword: "{{ admin_password }}"
+    isDefault: true
+    jsonData: '{"tlsAuth":false,"tlsAuthWithCACert":false,"tlsSkipVerify":true}'
+
+  - name: "interface_db"
+    type: "influxdb"
+    access: "proxy"
+    url: http://{{ vizstack_host }}:8086
+    database: "{{ interface_telemetry_db }}"
+    basicAuth: true
+    basicAuthUser: "{{ admin_user }}"
+    basicAuthPassword: "{{ admin_password }}"
+    isDefault: true
+    jsonData: '{"tlsAuth":false,"tlsAuthWithCACert":false,"tlsSkipVerify":true}'
+
+  - name: "iostat_db"
+    type: "influxdb"
+    access: "proxy"
+    url: http://{{ vizstack_host }}:8086
+    database: "{{ iostat_telemetry_db }}"
+    basicAuth: true
+    basicAuthUser: "{{ admin_user }}"
+    basicAuthPassword: "{{ admin_password }}"
+    isDefault: true
+    jsonData: '{"tlsAuth":false,"tlsAuthWithCACert":false,"tlsSkipVerify":true}'

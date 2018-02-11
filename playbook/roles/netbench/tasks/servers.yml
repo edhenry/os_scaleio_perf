@@ -1,0 +1,4 @@
+---
+
+- name: Start iperf in server mode
+  shell: nohup iperf -s >> /tmp/{{ ansible_hostname }}.iperf.log &

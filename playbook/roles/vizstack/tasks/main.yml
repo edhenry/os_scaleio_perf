@@ -1,0 +1,5 @@
+---
+
+- include: docker.yml
+- include: influx.yml
+- include: grafana.yml

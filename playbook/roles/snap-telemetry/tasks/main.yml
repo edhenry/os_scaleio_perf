@@ -1,0 +1,19 @@
+---
+
+## These tasks will execute included sub-tasks defintions
+
+- include: snap_telemetry.yml
+- include: snap_tasks.yml
+- include: snap_plugins.yml
+
+- name: Start snap-telemetry
+  systemd:
+    name: snap-telemetry
+    state: started
+  when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+
+- name: Start snap-telemetry
+  service:
+    name: snap-telemetry
+    state: started
+  when: ansible_distribution == "RedHat" or ansible_distribution == "CentOS"

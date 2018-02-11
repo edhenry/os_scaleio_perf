@@ -1,0 +1,25 @@
+---
+# Get Snap-Telemetry
+
+- name: Add debian repos
+  command: curl -s https://packagecloud.io/install/repositories/intelsdi-x/snap/script.deb.sh | sudo bash
+  when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+
+  # RHEL 6/7 according to SNAP docs
+- name: Add RHEL repos
+  shell: curl -s https://packagecloud.io/install/repositories/intelsdi-x/snap/script.rpm.sh | sudo bash
+  when: ansible_distribution == "RedHat" or ansible_distribution == "CentOS"
+
+
+- name: Install snap-telemetry
+  apt:
+    name: snap-telememtry
+    state: present
+  when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+
+- name: Install snap-telemetry
+  yum:
+    name: snap-telemetry
+    state: present
+  when: ansible_distribution == "RedHat" or ansible_distribution == "CentOS"
+

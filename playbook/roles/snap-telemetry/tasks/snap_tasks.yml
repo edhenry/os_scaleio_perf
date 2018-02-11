@@ -1,0 +1,20 @@
+---
+
+- name: Copy down cpu_influxdb task
+  template:
+    src: cpu_influxdb.json.j2
+    dest: /opt/snap/tasks/cpu_influxdb.json
+  mode: a+x
+
+- name: Copy down interface_influxdb task
+  template:
+    src: int_influx.json.j2
+    dest: /opt/snap/tasks/int_influxdb.json
+  mode: a+x
+
+- name: Copy down iostat task
+  template:
+    src: iostat_influxdb.json.j2
+    dest: /opt/snap/tasks/iostat_influxdb.json
+  mode: a+x
+

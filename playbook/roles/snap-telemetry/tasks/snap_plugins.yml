@@ -1,0 +1,31 @@
+---
+
+- name: Download interface snap collector plugin
+  get_url:
+    url: https://github.com/intelsdi-x/snap-plugin-collector-interface/releases/download/{{ snap_plugin_collector_interface_version }}/snap-plugin-collector-interface_linux_x86_64
+    dest: /opt/snap/plugins/snap-plugin-collector-interface
+    mode: 0755
+
+- name: Download iostat snap collector plugin
+  get_url:
+    url: https://github.com/intelsdi-x/snap-plugin-collector-iostat/releases/download/{{ snap_plugin_collector_iostat_version }}/snap-plugin-collector-iostat_linux_x86_64
+    dest: /opt/snap/plugins/snap-plugin-collector-iostat
+    mode: 0755
+
+- name: Download cpu snap collector plugin
+  get_url:
+    url: https://github.com/intelsdi-x/snap-plugin-collector-cpu/releases/download/{{ snap_plugin_collector_cpu_version }}/snap-plugin-collector-cpu_linux_x86_64
+    dest: /opt/snap/plugins/snap-plugin-collector-cpu
+    mode: 0755
+
+- name: Download ethtool snap collector plugin
+  get_url:
+    url: https://github.com/intelsdi-x/snap-plugin-collector-ethtool/releases/download/{{ snap_plugin_collector_ethtool_version }}/snap-plugin-collector-ethtool_linux_x86_64
+    dest: /opt/snap/plugins/snap-plugin-collector-ethtool
+    mode: 0755
+
+- name: Download influxdb snap publisher plugin
+  get_url:
+    url: https://github.com/intelsdi-x/snap-plugin-publisher-influxdb/releases/download/{{ snap_plugin_publisher_influxdb_version }}/snap-plugin-publisher-influxdb_linux_x86_64
+    dest: /opt/snap/plugins/snap-plugin-publisher-influxdb
+    mode: 0755

@@ -1,15 +1,31 @@
 ---
 
-- hosts: iperf_receiver
-  remote_user: vagrant
-  become: true
-  gather_facts: yes
-  roles:
-    - netbench
+### Configure monitoring infrastructure
+#- hosts: iperf_servers, iperf_clients
+#  remote_user: vagrant
+#  become: true
+#  gather_facts: yes
+#  roles:
+#    - snap-telemetry
 
-- hosts: iperf_sender
+- hosts: iperf_servers, iperf_clients
   remote_user: vagrant
   become: true
   gather_facts: yes
   roles:
-    - netbench
+    - telegraf
+
+#- hosts: vizstack-host
+#  remote_user: vagrant
+#  become: true
+#  gather_facts: yes
+#  roles:
+#    - vizstack
+
+## Play for testing network throughput
+#- hosts: ssh_ips
+#  remote_user: vagrant
+#  become: true
+#  gather_facts: yes
+#  roles:
+#    - netbench

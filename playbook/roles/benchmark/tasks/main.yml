@@ -1,5 +1,21 @@
 ---
 
+# TODO add interface bonding abstraction
+
+- name: Configure bond0
+  linkagg:
+    name: bond0
+    members:
+      - em1
+      - em2
+
+- name: Configure bond1
+  linkagg:
+    name: bond1
+    members:
+      - p4p1
+      - p4p2
+
 ## Set Sysctl configurations
 
 - name: Set net.ipv4.tcp_slow_start_after_idle

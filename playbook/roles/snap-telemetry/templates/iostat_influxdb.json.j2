@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "name": "iostat",
+  "schedule": {
+    "type": "simple",
+    "interval": "2s"
+  },
+  "workflow": {
+    "collect": {
+      "metrics": {
+        "/intel/iostat/avg-cpu/%user": {},
+        "/intel/iostat/avg-cpu/%system": {},
+        "/intel/iostat/avg-cpu/%idle": {},
+        "/intel/iostat/avg-cpu/%iowait": {},
+        "/intel/iostat/avg-cpu/%nice": {},
+        "/intel/iostat/avg-cpu/%steal": {},
+        "/intel/iostat/device/sda1/rrqm_per_sec": {},
+        "/intel/iostat/device/sda1/wrqm_per_sec": {},
+        "/intel/iostat/device/sda1/r_per_sec": {},
+        "/intel/iostat/device/sda1/w_per_sec": {},
+        "/intel/iostat/device/sda1/rkB_per_sec": {},
+        "/intel/iostat/device/sda1/wkB_per_sec": {},
+        "/intel/iostat/device/sda1/%util": {},
+        "/intel/iostat/device/ALL/rrqm_per_sec": {},
+        "/intel/iostat/device/ALL/wrqm_per_sec": {},
+        "/intel/iostat/device/ALL/r_per_sec": {},
+        "/intel/iostat/device/ALL/w_per_sec": {},
+        "/intel/iostat/device/ALL/rkB_per_sec": {},
+        "/intel/iostat/device/ALL/wkB_per_sec": {},
+        "/intel/iostat/device/ALL/%util": {}
+      },
+      "config": {
+        "/intel/iostat": {
+          "ReportSinceBoot": false
+        }
+      },
+      "process": null,
+      "publish": [
+        {
+            "plugin_name": "influxdb",
+            "config": {
+                "host": "{{ vizstack_host }}",
+                "port": 8086,
+                "database": "{{ iostat_telemetry_db }}",
+                "user": "admin",
+                "password": "admin"
+            }
+        }
+      ]
+    }
+  }
+}

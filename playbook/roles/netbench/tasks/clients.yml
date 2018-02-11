@@ -1,0 +1,20 @@
+---
+
+- name: Copy iperf script
+  template:
+    src: iperf.sh
+    dest: /tmp/iperf.sh
+  mode: a+x
+
+- name: Mod file permissions
+  command: chmod a+x iperf.sh
+  args:
+    chdir: /tmp
+
+- name: Run iperf test
+  shell: ./iperf.sh {{ test_count }} {{ item }} >> {{ ansible_hostname }}_to_{{ item }}.iperf.log
+  args:
+    chdir: /tmp
+  with_items:
+    - "{{ groups['iperf_servers'] }}"
+

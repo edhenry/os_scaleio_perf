@@ -7,7 +7,7 @@ if ! [ -x "$(type -P iperf)" ]; then
   exit 1
 fi
 
-if [ "$#" -ne "3" ]; then
+if [ "$#" -ne "2" ]; then
   echo "ERROR: script needs four arguments, where:"
   echo
   echo "1. Number of times to repeat test (e.g. 10)"
@@ -21,7 +21,6 @@ if [ "$#" -ne "3" ]; then
 else
   runs=$1
   host=$2
-  streams=$3
 fi
 
 log=iperf.$host.log
@@ -38,11 +37,9 @@ echo " target host .... $host"
 echo "------------------------------------------------------------------"
 
 for run in $(seq 1 $runs); do
-    for run in $(seq 1 $streams); do
-      iperf -c $host -f m >> $log &
-      # TODO Fix terminal output logging
-      #echo -e " run $run: \t $(awk '/Bandwidth/ {getline}; END{print $7, $8}' $log)"
-    done
+  iperf -c $host -f m >> $log &
+  # TODO Fix terminal output logging
+  echo -e " run $run: \t $(awk '/Bandwidth/ {getline}; END{print $7, $8}' $log)"
 done
 
 avg=$(awk -v runs=$runs '/Bandwidth/ {getline; sum+=$7; avg=sum/runs} END {print avg}' $log)
