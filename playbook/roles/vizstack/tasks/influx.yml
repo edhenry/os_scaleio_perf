@@ -1,6 +1,6 @@
 ---
 
-- name: Instantiate influxdb container
+- name: Instantiate influxdb container | {{ ansible_distribution }}
   docker_container:
     name: influxdb
     image: influxdb
@@ -11,17 +11,17 @@
     ports:
       - "8086:8086"
 
-- name: Wait for influxdb to start
+- name: Wait for influxdb to start | {{ ansible_distribution }}
   pause: seconds=15
 
-- name: Create snap database
+- name: Create snap database | {{ ansible_distribution }}
   command: docker exec influxdb bash -l -c "influx -execute 'CREATE DATABASE snap_db'"
 
-- name: Create cpu_telemetry database
+- name: Create cpu_telemetry database | {{ ansible_distribution }}
   command: docker exec influxdb bash -l -c "influx -execute 'CREATE DATABASE {{ cpu_telemetry_db }}'"
 
-- name: Create interface_telemetry database
+- name: Create interface_telemetry database | {{ ansible_distribution }}
   command: docker exec influxdb bash -l -c "influx -execute 'CREATE DATABASE {{ interface_telemetry_db }}'"
 
-- name: Create iostat_telemetry database
+- name: Create iostat_telemetry database | {{ ansible_distribution }}
   command: docker exec influxdb bash -l -c "influx -execute 'CREATE DATABASE {{ iostat_telemetry_db }}'"

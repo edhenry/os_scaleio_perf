@@ -5,42 +5,60 @@
 
 # TODO Add support for multiple Ubuntu versions
 
-- name: Add docker repos
+- name: Add docker repos | {{ ansible_distribution }}
   shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   when: ansible_distribution == "Ubuntu"
 
-- name: Add repos to apt
+- name: Add repos to apt | {{ ansible_distribution }}
   command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   when: ansible_distribution == "Ubuntu"
 
-- name: Update apt
+- name: Update apt | {{ ansible_distribution }}
   command: apt-get update
   when: ansible_distribution == "Ubuntu"
 
-- name: Install docker
+- name: Install pip | {{ ansible_distribution }}
+  apt:
+    name: python-pip
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install docker | {{ ansible_distribution }}
   apt:
     name: docker-ce
     state: present
   when: ansible_distribution == "Ubuntu"
 
 # TODO Add support for multiple CentOS versions
-- name: Add Docker repos
+
+- name: Install pip | {{ ansible_distribution }}
+  yum:
+    name: python-pip
+    state: present
+  when: ansible_distribution == "CentOS"
+
+- name: Add Docker repos | {{ ansible_distribution }}
   command: curl -fsSL get.docker.com -o get-docker.sh
   when: ansible_distribution == "CentOS"
 
-- name: Chown docker script
+- name: Chown docker script | {{ ansible_distribution }}
   command: chown vagrant:vagrant get-docker.sh
   when: ansible_distribution == "CentOS"
 
-- name: chmod docker script
+- name: chmod docker script | {{ ansible_distribution }}
   command: chmod +x get-docker.sh
   when: ansible_distribution == "CentOS"
 
-- name: Execute docker script
+- name: Ensure docker-py installed | {{ ansible_distribution }}
+  pip:
+    name: docker-py
+    state: present
+
+- name: Execute docker script | {{ ansible_distribution }}
   command: ./get-docker.sh
   when: ansible_distribution == "CentOS"
 
-- name: Start docker
+- name: Start docker | {{ ansible_distribution }}
   systemd:
     name: docker
     state: started

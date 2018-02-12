@@ -37,7 +37,7 @@ echo " target host .... $host"
 echo "------------------------------------------------------------------"
 
 for run in $(seq 1 $runs); do
-  iperf -c $host -f m >> $log &
+  iperf -c $host -f m -t {{ length_of_benchmark }} -d >> $log &
   # TODO Fix terminal output logging
   echo -e " run $run: \t $(awk '/Bandwidth/ {getline}; END{print $7, $8}' $log)"
 done

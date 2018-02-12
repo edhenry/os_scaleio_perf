@@ -8,13 +8,13 @@
 #  roles:
 #    - snap-telemetry
 
-- hosts: iperf_servers, iperf_clients
-  remote_user: vagrant
-  become: true
-  gather_facts: yes
-  roles:
-    - telegraf
-
+#- hosts: iperf_servers, iperf_clients
+#  remote_user: vagrant
+#  become: true
+#  gather_facts: yes
+#  roles:
+#    - telegraf
+#
 #- hosts: vizstack-host
 #  remote_user: vagrant
 #  become: true
@@ -23,9 +23,9 @@
 #    - vizstack
 
 ## Play for testing network throughput
-#- hosts: ssh_ips
-#  remote_user: vagrant
-#  become: true
-#  gather_facts: yes
-#  roles:
-#    - netbench
+- hosts: ssh_ips
+  remote_user: vagrant
+  become: true
+  gather_facts: yes
+  roles:
+    - netbench

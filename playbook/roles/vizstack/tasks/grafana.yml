@@ -1,22 +1,22 @@
 ---
 
-- name: Install pip
+- name: Install pip | {{ ansible_distribution }}
   apt:
     name: python-pip
     state: present
   when: ansible_distribution == "Ubuntu"
 
-- name: Install pip
+- name: Install pip | {{ ansible_distribution }}
   yum:
     name: python-pip
     state: present
   when: ansible_distribution == "CentOS"
 
-- name: Install docker-py
+- name: Install docker-py | {{ ansible_distribution }}
   pip:
     name: docker-py
 
-- name: Instantiate Grafana container
+- name: Instantiate Grafana container | {{ ansible_distribution }}
   docker_container:
     name: grafana
     image: grafana/grafana:latest
@@ -25,14 +25,14 @@
     ports:
       - "3000:3000"
 
-- name: Grab Snap plugin
+- name: Grab Snap plugin | {{ ansible_distribution }}
   command: docker exec grafana bash -l -c "grafana-cli plugins install raintank-snap-app"
 
 - name: Restart container after snap plugin install
   command: docker restart grafana
 
 
-- name: Create grafana datasource
+- name: Create grafana datasource | {{ ansible_distribution }}
   uri:
     url: "http://{{ vizstack_host }}:3000/api/datasources"
     user: "{{ admin_user }}"

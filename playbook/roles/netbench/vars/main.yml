@@ -1,3 +1,6 @@
 ---
 
-test_count: 10
+test_count: 2
+
+# Length of benchmark in seconds
+length_of_benchmark: 120

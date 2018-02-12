@@ -2,7 +2,7 @@
 
 - name: Copy iperf script
   template:
-    src: iperf.sh
+    src: iperf.sh.j2
     dest: /tmp/iperf.sh
   mode: a+x
 
@@ -12,9 +12,12 @@
     chdir: /tmp
 
 - name: Run iperf test
-  shell: ./iperf.sh {{ test_count }} {{ item }} >> {{ ansible_hostname }}_to_{{ item }}.iperf.log
+  shell: ./iperf.sh {{ test_count }} {{ item }}
   args:
     chdir: /tmp
   with_items:
     - "{{ groups['iperf_servers'] }}"
 
+- name: Wait for tests
+  wait_for:
+    timeout: "{{ length_of_benchmark }}"
