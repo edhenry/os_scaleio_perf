@@ -1,4 +1,4 @@
-# iperf benchmark playbook
+# iperf benchmark role
 
 ## Requirements
 
