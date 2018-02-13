@@ -14,8 +14,8 @@
 - name: Wait for influxdb to start | {{ ansible_distribution }}
   pause: seconds=15
 
-- name: Create telegraf DB | {{ ansible_distribution }}
-  command: docker exec influxdb bash -l -c "influx -execute 'CREATE DATABASE telegraf'"
+#- name: Create telegraf DB | {{ ansible_distribution }}
+#  command: docker exec influxdb bash -l -c "influx -execute 'CREATE DATABASE telegraf'"
 
 # TODO : Decide if we want to keep the SNAP infrastructure
 #- name: Create snap database | {{ ansible_distribution }}

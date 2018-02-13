@@ -2,8 +2,10 @@
 
 vizstack_host: 192.168.50.11
 
-cpu_telemetry_db: cpu_telemetry_db
+telegraf_db: telegraf
 
-interface_telemetry_db: interface_telemetry_db
+#cpu_telemetry_db: cpu_telemetry_db
 
-iostat_telemetry_db: iostat_telemetry_db
+#interface_telemetry_db: interface_telemetry_db
+
+#iostat_telemetry_db: iostat_telemetry_db
