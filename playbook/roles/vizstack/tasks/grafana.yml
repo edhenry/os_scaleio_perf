@@ -42,17 +42,15 @@
     body_format: json
     body: "{{ item | to_json }}"
   with_items: "{{ grafana_datasources }}"
-  #no_log: True
-  #when: datasources.content == "[]"
+#  #no_log: True
+#  #when: datasources.content == "[]"
 
-#- name: Copy datasources template
-#  template:
-#    src: datasources.sh.j2
-#    dest: /tmp/datasources.sh
-#  args:
-#    mode: a+x
-#
-#- name: Add datasources in datasources.sh
-#  script: datasources.sh
-#  args:
-#    chdir: /tmp
+#- name: Create Grafana Dashboard | {{ ansible_distribution }}
+#  uri:
+#    url: "http://{{ vizstack_host }}:3000/api/dashboards/import"
+#    user: "{{ admin_user }}"
+#    password: "{{ admin_password }}"
+#    force_basic_auth: yes
+#    method: POST
+#    body_format: json
+#    body: "{{ lookup('file','files/test2.json') }}"

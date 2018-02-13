@@ -5,7 +5,7 @@ admin_password: admin
 
 grafana_datasources:
   - name: "telegraf"
-    type: "influxDB"
+    type: "influxdb"
     access: "proxy"
     url: http://{{ vizstack_host }}:8086
     database: "{{ telegraf_db }}"
